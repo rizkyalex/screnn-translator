@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screen Translator</string>
+    <string name="deskripsi">Terjemahkan teks Inggris di layar ke Bahasa Indonesia secara otomatis.</string>
+    <string name="aktifkan_terjemahan">Aktifkan Terjemahan</string>
+    <string name="download_model">Download Model</string>
+    <string name="status_butuh_izin">Butuh izin overlay &amp; screen capture. Tekan "Aktifkan Terjemahan".</string>
+    <string name="status_overlay_ok">Izin overlay OK. Tekan "Aktifkan Terjemahan" untuk mulai.</string>
+    <string name="status_aktif">Translator aktif — ketuk bubble melayang untuk menerjemahkan layar.</string>
+    <string name="status_izin_capture_ditolak">Izin screen capture ditolak.</string>
+    <string name="izin_capture_dibutuhkan">Izin screen capture dibutuhkan</string>
+    <string name="aktifkan_izin_overlay">Aktifkan izin "Tampil di atas aplikasi lain", lalu tekan lagi tombolnya.</string>
+    <string name="status_download_model">Mengunduh model EN→ID…</string>
+    <string name="status_model_siap">Model siap! Silakan pakai.</string>
+    <string name="status_model_gagal">Gagal unduh model: %1$s</string>
+</resources>
