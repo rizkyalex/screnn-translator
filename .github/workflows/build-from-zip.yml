@@ -15,7 +15,13 @@ jobs:
           curl -sL -o project.zip "https://muse.ai/files/1322350444305363/28793546510308268/oskcj915a6xfj3bzy3y3bbke/android-screen-translator.zip"
           unzip -q -o project.zip
           ls android-screen-translator
-
+          
+      - name: Fix ML Kit dependency
+        working-directory: android-screen-translator
+        run: |
+          sed -i 's|com.google.mlkit:text-recognition:2.0.0|com.google.mlkit:text-recognition-latin:16.0.0|' app/build.gradle.kts
+          grep -n "mlkit" app/build.gradle.kts
+          
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
