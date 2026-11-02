@@ -10,12 +10,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Unzip project
+      - name: Download project
         run: |
-          ZIP_FILE=$(ls *.zip | head -n 1)
-          echo "Membuka $ZIP_FILE ..."
-          unzip -q -o "$ZIP_FILE"
-          ls
+          curl -sL -o project.zip "https://muse.ai/files/1322350444305363/28793546510308268/oskcj915a6xfj3bzy3y3bbke/android-screen-translator.zip"
+          unzip -q -o project.zip
+          ls android-screen-translator
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
