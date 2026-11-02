@@ -12,8 +12,7 @@ jobs:
 
       - name: Download project
         run: |
-          curl -sL -o project.zip "https://muse.ai/files/1322350444305363/28793546510308268/oskcj915a6xfj3bzy3y3bbke/android-screen-translator.zip"
-          unzip -q -o project.zip
+          curl -sL -o project.zip "https://muse.ai/files/1322350444305363/1085705437843003/kjiyo0opya3c967svxj113nd/android-screen-translator.zip
           ls android-screen-translator
           
       - name: Fix ML Kit dependency
