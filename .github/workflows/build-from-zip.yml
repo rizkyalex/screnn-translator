@@ -7,18 +7,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Unzip project
         run: |
           ZIP_FILE=$(ls *.zip | head -n 1)
           echo "Membuka $ZIP_FILE ..."
-          rm -rf extracted && mkdir extracted
-          unzip -q "$ZIP_FILE" -d extracted
-          PROJ_DIR=$(find extracted -maxdepth 3 -name "settings.gradle.kts" | head -n 1 | xargs dirname)
-          echo "PROJ_DIR=$PROJ_DIR" >> $GITHUB_ENV
-          ls "$PROJ_DIR"
+          unzip -q -o "$ZIP_FILE"
+          ls
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -28,18 +25,22 @@ jobs:
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools platforms;android-34 build-tools;34.0.0'
 
       - name: Setup Gradle 8.7
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: 8.7
 
       - name: Build debug APK
-        working-directory: ${{ env.PROJ_DIR }}
-        run: gradle assembleDebug --stacktrace
+        working-directory: android-screen-translator
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: screen-translator-apk
-          path: ${{ env.PROJ_DIR }}/app/build/outputs/apk/debug/app-debug.apk
+          path: android-screen-translator/app/build/outputs/apk/debug/app-debug.apk
